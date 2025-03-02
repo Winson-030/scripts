@@ -1,0 +1,131 @@
+# Docker Management Script
+
+## Overview
+
+This script provides a convenient way to install, configure, and manage Docker CE on Ubuntu/Debian systems. It supports both English and Chinese languages automatically based on system settings.
+
+## Installation
+
+### One-line Installation from Remote
+
+```bash
+# Using curl
+curl -sSL https://raw.githubusercontent.com/Winson-030/scripts/main/install_docker/install_docker.sh | bash -s -- install
+
+# Using wget
+wget -qO- https://raw.githubusercontent.com/Winson-030/scripts/main/install_docker/install_docker.sh | bash -s -- install
+```
+
+## Features
+
+- One-command Docker CE installation
+- Automatic user group configuration
+- Complete uninstallation with cleanup
+- Multi-language support (English/Chinese)
+- System compatibility checks
+- Secure GPG key handling
+- Clean removal of Docker components
+
+## System Requirements
+
+- Ubuntu 20.04+ or Debian 10+
+- Minimum 2GB RAM
+- 20GB free disk space
+- Internet connection
+- Root or sudo privileges
+
+## Installation
+
+### Basic Installation
+
+```bash
+sudo ./install_docker.sh install
+```
+
+### Installation with User Configuration
+
+```bash
+sudo ./install_docker.sh install [username]
+```
+
+## Usage
+
+### Add User to Docker Group
+
+```bash
+sudo ./install_docker.sh add [username]
+```
+
+### Verify Installation
+
+```bash
+docker --version
+docker run hello-world
+```
+
+## Uninstallation
+
+### Complete Removal
+
+```bash
+sudo ./install_docker.sh remove
+```
+
+### Removal with User Cleanup
+
+```bash
+sudo ./install_docker.sh remove [username]
+```
+
+## Multi-language Support
+
+The script automatically detects system language settings and displays messages in either English or Chinese. Language is determined by:
+
+1. LANG environment variable
+2. System timezone settings
+
+## Security Considerations
+
+- Always verify the script's integrity before execution
+- Use trusted sources for script download
+- Only add trusted users to the docker group
+- Regularly update Docker and system packages
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Permission Denied**  
+   Ensure script is executable:  
+   `chmod +x install_docker.sh`
+
+2. **Network Errors**  
+   Check internet connectivity and firewall settings
+
+3. **User Group Changes Not Applied**  
+   After adding a user, either:
+   - Log out and log back in
+   - Run `newgrp docker`
+
+### Logs
+
+Check installation logs at:  
+`/var/log/docker-install.log`
+
+## Version History
+
+- v1.0: Initial release with basic installation/uninstallation
+- v1.1: Added multi-language support
+- v1.2: Improved error handling and logging
+
+## License
+
+This script is released under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Contributing
+
+Please follow the contribution guidelines in [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Support
+
+For assistance, please open an issue in the project repository.
